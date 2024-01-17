@@ -1,14 +1,22 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL"
-  },
-  "production": {
-    "use_env_variable": "DATABASE_URL",
+    "username": "heroes_53fb_user",
+    "password": "ev1dxkhYcVoElGU2Jy1I726lSpN7LVxv",
+    "database": "heroes_53fb",
+    "host": "dpg-cmk0j4vqd2ns73bn3rc0-a.frankfurt-postgres.render.com",
+    "dialect": "postgres",
+    "ssl": true,
     "dialectOptions": {
       "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
+        "require": true
       }
     }
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
