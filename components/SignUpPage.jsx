@@ -26,7 +26,7 @@ function SignUpPage() {
             <label for="exampleInputPassword1" className="form-label">
               Image
             </label>
-            <input name="img" type="file" className="form-control" id="exampleInputPassword1" />
+            <input name="img" type="text" className="form-control" id="exampleInputPassword1" />
           </div>
           <div className="mb-3">
             <label for="exampleInputPassword1" className="form-label">

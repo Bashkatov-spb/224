@@ -1,12 +1,32 @@
 const router = require('express').Router();
 const HeroItem = require('../../components/HeroItem');
 const { Hero, Like } = require('../../db/models');
+const multer = require('multer');
 
-router.post('/', async (req, res) => {
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/img');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
+router.post('/', upload.single('img'), async (req, res) => {
   try {
-    const { name, description, film, img } = req.body;
+    const { name, description, film } = req.body;
 
-    const hero = await Hero.create({ name, description, film, img, user_id: res.locals.user.id });
+    const newFileUrl = `/img/${req.file.originalname}`;
+
+    const hero = await Hero.create({
+      name,
+      description,
+      film,
+      img: newFileUrl,
+      user_id: res.locals.user.id,
+    });
     const currentHero = await Hero.findOne({ where: { id: hero.id }, include: Like });
     const html = res.renderComponent(HeroItem, { hero: currentHero }, { doctype: false });
     res.json({

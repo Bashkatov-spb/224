@@ -4,17 +4,17 @@ if (addForm) {
   addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const { name, film, description, img } = e.target;
+
+    const formData = new FormData();
+
+    formData.append('img', img.files[0]);
+    formData.append('name', name.value);
+    formData.append('description', description.value);
+    formData.append('film', film.value);
+
     const res = await fetch('/api/heroes', {
       method: 'post',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: name.value,
-        film: film.value,
-        description: description.value,
-        img: img.value,
-      }),
+      body: formData,
     });
     const data = await res.json();
     if (data.message === 'success') {

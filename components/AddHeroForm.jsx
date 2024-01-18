@@ -37,7 +37,7 @@ function AddHeroForm() {
           <label htmlFor="exampleInputPassword1" className="form-label">
             Image
           </label>
-          <input name="img" type="text" className="form-control" id="exampleInputPassword1" />
+          <input name="img" type="file" className="form-control" id="exampleInputPassword1" />
         </div>
 
         <button type="submit" className="btn btn-primary">

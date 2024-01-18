@@ -7,7 +7,7 @@ function HeroesListPage({ title, heroes, user }) {
   return (
     <Layout user={user} title={title}>
       <h1>Heroes Page</h1>
-      <AddHeroForm />
+      {user && <AddHeroForm />}
       <div className="container hero-container" style={{ display: 'flex' }}>
         {heroes.map((hero) => (
           <HeroItem key={hero.id} hero={hero} user={user} />

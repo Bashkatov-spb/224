@@ -30,7 +30,7 @@ function NavBar({ user }) {
                   Favorites
                 </a>
                 <div className="nav__profile">
-                  <p>Hello, {user.name}</p>
+                  <p> САМ ТЫ {user.name}</p>
                   <img className="nav__avatar" src={user.img} alt="" />
                 </div>
                 <a className="nav-link" href="/api/auth/logout">
